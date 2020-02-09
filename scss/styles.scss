@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto:300&display=swap');
+@import 'mixins';
+@import 'themify-icons';
 
-
+$lightskyblue: #6fcffb;
+$salmon: #fd8d7b;
 
 @font-face {
     font-family: 'Bebas Neue';
@@ -24,15 +27,13 @@
     font-style: normal;
 }
 
-
-
 @import 'normalize';
 
 * {
     box-sizing: border-box;
 }
 
-html{
+html {
     height: 100%;
     font-size: 10px;
 }
@@ -40,12 +41,137 @@ html{
 body {
     min-height: 100%;
     font: 300 1.6rem/1.6 'Roboto', sans-serif;
-    background-color: #9789f9;
+    background: #9789f9;
+    color: #181818;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    
 }
+
+// main{
+//     width: 100%;
+// }
 
 .container {
     margin: 0 auto;
     max-width: 1070px;
     width: 96%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
+.card{
+    background-color: #f5f4f9;
+    width: 330px;
+    min-height: 615px;
+    text-align: center;
+    padding: 35px 35px 0 35px;
+    
+
+    &__header{}   
+
+    &__title{
+        @include text (inherit, 'Bebas Neue', 2.4rem, 700, 1.2);
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    &__price{
+        font-weight: lighter;
+        font-size: 6rem;
+        line-height: .7;
+        margin-bottom: 15px;
+        &:before{
+            content: "$";
+            vertical-align: top;
+            
+        }
+        &:after{
+            content: '/hr';
+            text-transform: uppercase;
+        }
+
+        &:before, 
+        &:after{
+            font-size: 1.6rem;
+        }
+
+    }
+
+    
+
+    &__features{
+        list-style: none;
+        padding: 0;
+        margin: 15px 0 0 0;
+        display: inline-block;
+    }
+
+    &__feature{
+        text-align: left;
+        padding: 20px 0;
+    }
+
+    &__body{
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 50% 50% 0 0;
+        margin: 0 -70px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__wrap{
+    overflow: hidden;
+    margin: 0 -35px;   
+     }
+
+    &__icon{
+        font-size: 3.6rem;
+    }
+
+    &__btn{
+        text-decoration: none;
+        width: 80%;
+        text-transform: uppercase;
+        @include text (#fff, 'Bebas Neue', 1.8rem, 700, 1);
+        border-radius: 30px;
+        padding: 20px 50px;
+        background-color: $lightskyblue;
+        border: 2px solid $lightskyblue;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+
+        @include hover{
+            background-color: #fff; 
+            color: $lightskyblue;
+        }
+        &--active{
+            top: 0;
+            background-color: $salmon;
+            border: 2px solid $salmon;
+            @include hover{
+            background-color: #fff; 
+            color: $salmon;
+        }
+        }
+    }
+
+    &__footer{
+        position: relative;
+        padding: 35px 0;
+    }
+
+    &__desc{
+        @include text (#a9a9a9, 'Robota', 1.1rem, 400, 1);
+    }
+}
